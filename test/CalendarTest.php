@@ -4,6 +4,7 @@ namespace Calendar;
 
 use DateTime;
 use PHPUnit_Framework_TestCase;
+use Calendar\Calendar;
 
 class CalendarTest extends PHPUnit_Framework_TestCase
 {
@@ -30,14 +31,13 @@ class CalendarTest extends PHPUnit_Framework_TestCase
     public function testCalendar($date, $day, $weekday, $first_weekday, $number_of_days, $number_of_days_prev, array $result)
     {
         $calendar = new Calendar(new DateTime($date));
-
         $this->assertSame($day, $calendar->getDay());
         $this->assertSame($weekday, $calendar->getWeekDay());
         $this->assertSame($first_weekday, $calendar->getFirstWeekDay());
         $this->assertSame($number_of_days, $calendar->getNumberOfDaysInThisMonth());
         $this->assertSame($number_of_days_prev, $calendar->getNumberOfDaysInPreviousMonth());
-
         $this->assertSame($result, $calendar->getCalendar());
+       
     }
 
     public function dataProvider()
@@ -373,7 +373,7 @@ class CalendarTest extends PHPUnit_Framework_TestCase
                 11 => [15 => false, 16 => false, 17 => false, 18 => false, 19 => false, 20 => false, 21 => false],
                 12 => [22 => false, 23 => false, 24 => false, 25 => false, 26 => false, 27 => false, 28 => false],
                 13 => [29 => false, 30 => false, 31 => false, 1  => false, 2  => false, 3  => false, 4  => false],
-            ]],
+            ]], 
         ];
     }
 }
